@@ -45,9 +45,19 @@ public class PlayerRunning : MonoBehaviour
                 {
                     verticalVelocity = verticalVelocity - (gravity * Time.deltaTime);
                 }
-                moveVector.z = Input.GetAxis("Horizontal") * 5;
-                moveVector.y = verticalVelocity;
+                moveVector.x = Input.GetAxis("Horizontal") * 5;
+                // moveVector.y = verticalVelocity;
                 moveVector.z = speed;
+
+                if (Input.GetKey(KeyCode.Space)) 
+                {
+                    moveVector.y = -verticalVelocity;
+                }
+                else
+                {
+                    moveVector.y = verticalVelocity;
+                }
+
                 player.Move(moveVector * Time.deltaTime);   // di chuyển tổng hợp 3 trục
             }
         }

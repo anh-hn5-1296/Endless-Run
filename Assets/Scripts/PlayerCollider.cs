@@ -14,7 +14,9 @@ public class PlayerCollider : MonoBehaviour
     {
         if (hit.gameObject.tag == "Coin")   //neu nhan vat va cham voi coin
         {
+            locationText.text = "Eat Gold"; //Update len text cua phan canvas
             //Xu ly am thanh
+            SoundManager.Instance.PlaySound(collectSound);
             hit.gameObject.GetComponent<Coin>().Dead(); //truy cap ham Dead từ Coin
             //tang 1 diem
             GetComponent<ScoreManager>().TangDiem(1);
@@ -23,6 +25,7 @@ public class PlayerCollider : MonoBehaviour
         {
             if (isHitStone)
             {
+                locationText.text = "Collision with Obstacles"; //Update len text cua phan canvas
                 //Dieu chinh suc khoe nhan vat
                 GetComponent<PlayerHealth>().ModifyHealth(-10);
                 //tru diem
@@ -30,26 +33,26 @@ public class PlayerCollider : MonoBehaviour
             }
         }
         //Update len text cua phan canvas
-        if (hit.gameObject.tag == "MushroomLocation")
-        {
-            locationText.text = "Mushroom: Location";
-        }
-        if (hit.gameObject.tag == "Stone")
-        {
-            locationText.text = "Stone: Location";
-        }
-        if (hit.gameObject.tag == "HouseLocation")
-        {
-            locationText.text = "House: Location";
-        }
-        if (hit.gameObject.tag == "FireLocation")
-        {
-            locationText.text = "Fire: Location";
-        }
-        if (hit.gameObject.tag == "Coin")
-        {
-            locationText.text = "Coin: Location";
-        }
+        //if (hit.gameObject.tag == "MushroomLocation")
+        //{
+        //    locationText.text = "Mushroom: Location";
+        //}
+        //if (hit.gameObject.tag == "Stone")
+        //{
+        //    locationText.text = "Stone: Location";
+        //}
+        //if (hit.gameObject.tag == "HouseLocation")
+        //{
+        //    locationText.text = "House: Location";
+        //}
+        //if (hit.gameObject.tag == "FireLocation")
+        //{
+        //    locationText.text = "Fire: Location";
+        //}
+        //if (hit.gameObject.tag == "Coin")
+        //{
+        //    locationText.text = "Coin: Location";
+        //}
     }
     private IEnumerator EnabledCollider(ControllerColliderHit hit, float second)
     {

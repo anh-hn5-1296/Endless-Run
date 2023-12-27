@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth > 10)     //co the thay 10 bang so khac
         {
             //Phat ra am thanh: bi dau
+            SoundManager.Instance.PlaySound(hurtSound);
         }
         OnHealthPrecentChanged(currentHealthPercent);   //thay doi tren man hinh tich mau
     }
@@ -52,12 +53,15 @@ public class PlayerHealth : MonoBehaviour
             audioSource.loop = false;
             //set trang thai die
             anim.SetInteger("Death", 1);
+            //
             GetComponent<PlayerRunning>().Dead();       //Goi ham die: nhan vat ko chay
             GetComponent<ScoreManager>().Dead();        //Goi ham die: khong cong diem
+            time += Time.deltaTime;
+
         }
-        if (time > 4f)      //Thoi gian cho de sang level
+        if (time > 3f)      //Thoi gian cho de sang level
         {
-            Application.LoadLevel("Game Over");
+            Application.LoadLevel("GameOverScene");
         }
     }
 }
